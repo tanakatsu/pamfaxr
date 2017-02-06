@@ -662,6 +662,89 @@ class PamFaxr
     end
     
     ##
+    # Get the detail of a fax
+    #
+    # @param [required, String] uuid of the fax
+    #
+    # @return [Hash] the result of the request to get the detail of a fax
+    #
+    # @example getting fax details
+    #   pamfaxr.get_fax_details('ebKVV4XGwx99Wu')
+    #
+    #   returns:
+    #
+    #   {
+    #     "result" => {
+    #       "code" => "success",
+    #       "type" => "",
+    #       "count" => 2,
+    #       "message" => ""
+    #     },
+    #     "FaxContainer" => {
+    #                       "uuid" => "UguHZG2AhtYgRs",
+    #                      "state" => "in_queue",
+    #                    "created" => "2017-02-06 10:45:40",
+    #                    "send_at" => nil,
+    #                    "updated" => "2017-02-06 10:46:01",
+    #         "processing_started" => nil,
+    #                      "pages" => "1",
+    #                      "price" => 32.86,
+    #                   "cover_id" => nil,
+    #                 "cover_text" => nil,
+    #          "cover_page_length" => nil,
+    #                  "send_chat" => false,
+    #                   "send_sms" => false,
+    #                  "send_mail" => false,
+    #         "group_notification" => false,
+    #         "error_notification" => true,
+    #                   "currency" => "CNY",
+    #              "currency_rate" => 0.13226,
+    #                 "sender_fax" => nil,
+    #                "sender_name" => nil,
+    #                 "cover_data" => nil,
+    #               "user_send_at" => nil,
+    #              "user_timezone" => nil,
+    #             "state_override" => "in_queue"
+    #     },
+    #     "FaxRecipient" => {
+    #                            "uuid" => "ypBPy9sOUcq3I3",
+    #                           "state" => "in_queue",
+    #                          "number" => "+81522125718",
+    #                            "zone" => "16",
+    #                     "number_type" => "FIXED",
+    #                     "description" => "Nagoya",
+    #                       "area_code" => "52",
+    #                  "price_per_page" => 32.86,
+    #                    "price_source" => "SLOW",
+    #                         "created" => "2017-02-06 10:45:47",
+    #                         "updated" => "2017-02-06 10:45:47",
+    #                "delivery_started" => nil,
+    #                       "completed" => nil,
+    #                            "sent" => nil,
+    #                            "name" => "",
+    #                         "country" => "JP",
+    #                     "status_code" => nil,
+    #                  "status_message" => "In queue",
+    #                 "outfile_tiff_id" => nil,
+    #                   "document_type" => "TIFF_G4",
+    #                        "duration" => nil,
+    #                        "siblings" => 0,
+    #                           "pages" => "1",
+    #                           "price" => 32.86,
+    #                        "currency" => "CNY",
+    #                   "currency_rate" => 0.13226,
+    #             "transmission_report" => "",
+    #                  "country_prefix" => "81",
+    #                "formatted_number" => "+81 52 2125718",
+    #         "original_price_per_page" => 8.57
+    #     }
+    #   }
+    def get_fax_details(uuid)
+      resource = '/FaxHistory' + "/GetFaxDetails" + @api_credentials + "&uuid=#{uuid}"
+      get(resource)
+    end
+
+    ##
     # Captures any unknown methods gracefully by throwing a Runtime Error
     def method_missing(method, *args)
       raise RuntimeError, "Unknown method #{method}"
