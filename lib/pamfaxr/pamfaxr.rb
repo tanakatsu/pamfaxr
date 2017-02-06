@@ -717,8 +717,8 @@ class PamFaxr
     # @return [Hash] the result of the request
     def post(resource, data, headers={})
       begin
-        result, body = @http.post(resource, data, headers)
-        JSON.parse body
+        result, _body = @http.post(resource, data, headers)
+        JSON.parse result.body
       rescue => error
       end
     end
