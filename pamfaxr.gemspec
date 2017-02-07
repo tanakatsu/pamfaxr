@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pamfaxr}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Jason Goecke"]
-  s.date = %q{2011-02-17}
+  s.authors = ["Tsuyoshi Tanaka"]
+  s.date = %q{2017-02-06}
   s.description = %q{Ruby library for the FaxJob portion of the PamFax API.}
-  s.email = %q{jsgoecke@voxeo.com}
+  s.email = %q{tanakatsu1080@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
     "spec/spec.opts",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/tropo/pamfaxr}
+  s.homepage = %q{http://github.com/tanakatsu/pamfaxr}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
