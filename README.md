@@ -36,7 +36,7 @@ Example
 	pamfaxr.add_file('examples/Tropo.pdf')
 	
 	# Add a recipient
-	pamfaxr.add_recipient('+14155551212')
+	recipient = pamfaxr.add_recipient('+14155551212')
 	
 	# Loop until the fax is ready to send
 	loop do
@@ -47,3 +47,10 @@ Example
 	
 	# Send the fax
 	pamfaxr.send_fax
+
+	# Get a detail of the fax
+	pamfax.get_fax_details(recipient['FaxRecipient']['uuid'])
+
+	# Get current user object
+	pamfaxr.reload_user
+
