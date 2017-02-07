@@ -662,6 +662,70 @@ class PamFaxr
     end
     
     ##
+    # Reload user
+    #
+    # @return [Hash] the result of the request to get current user object
+    #
+    # @example getting current user object
+    #   pamfaxr.reload_user
+    #
+    #   returns:
+    #   {
+    #           "result" => {
+    #              "code" => "success",
+    #              "type" => "",
+    #             "count" => 3,
+    #           "message" => ""
+    #       },
+    #             "User" => {
+    #                         "uuid" => "1zu6UNOHaZgYFD",
+    #                     "username" => "system@unifa-e.com",
+    #                      "created" => "2017-01-26 14:42:31",
+    #                       "credit" => 627.14,
+    #                  "free_credit" => 0,
+    #              "inactive_credit" => 0,
+    #           "reactivated_credit" => 0,
+    #                        "email" => "system@unifa-e.com",
+    #                    "confirmed" => "1",
+    #                    "is_member" => 0,
+    #                 "cm_availible" => 0
+    #       },
+    #         "Currency" => {
+    #                 "code" => "JPY",
+    #           "raw_symbol" => "¥"
+    #       },
+    #       "UserRights" => {
+    #              "type" => "list",
+    #           "content" => [
+    #               [0] {
+    #                      "name" => "see_credit",
+    #                   "allowed" => 1
+    #               },
+    #               [1] {
+    #                      "name" => "buy_credit",
+    #                   "allowed" => 1
+    #               },
+    #               [2] {
+    #                      "name" => "buy_number",
+    #                   "allowed" => 1
+    #               },
+    #               [3] {
+    #                      "name" => "transfer_credit",
+    #                   "allowed" => 1
+    #               },
+    #               [4] {
+    #                      "name" => "receive_messages",
+    #                   "allowed" => 1
+    #               }
+    #           ]
+    #       }
+    #   }
+    def reload_user
+      resource = '/Session' + "/ReloadUser" + @api_credentials
+      get(resource)
+    end
+
+    ##
     # Get the detail of a fax
     #
     # @param [required, String] uuid of the fax
