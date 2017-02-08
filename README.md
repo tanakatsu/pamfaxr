@@ -16,6 +16,35 @@ Requires these gems, also in the Gemfile:
 	* json
 	* mime-types
 
+Installation
+------------
+
+Add this line to your application's Gemfile:
+
+```
+gem 'pamfaxr', github: 'tanakatsu/pamfaxr', branch: 'master'
+```
+
+And then execute:
+
+```
+$ bundle install
+```
+
+In case of installing via Gemfile, you should run your script with `'bundle exec'`.
+For example,
+
+```
+$ bundle exec ruby yourscript.rb
+```
+
+Or, you can install it yourself as:
+
+```
+$ gem install specific_install
+$ gem specific_install https://github.com/tanakatsu/pamfaxr
+```
+
 Example
 -------
 
