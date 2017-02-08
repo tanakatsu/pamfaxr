@@ -45,6 +45,16 @@ $ gem install specific_install
 $ gem specific_install https://github.com/tanakatsu/pamfaxr
 ```
 
+#### Trouble shooting
+If you encounter with the error
+"The git source git://github.com/tanakatsu/pamfaxr.git is not yet checked out. Please run bundle install before trying to start your application",
+
+then, try
+
+```
+$ bundle update pamfaxr
+```
+
 Example
 -------
 
