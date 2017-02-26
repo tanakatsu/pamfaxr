@@ -809,6 +809,130 @@ class PamFaxr
     end
 
     ##
+    # Create a new PamFax user
+    # 
+    # @param [required, String] user email
+    # @param [required, String] password
+    # @param [required, String] culture (ex. ja-JP)
+    #
+    # @return [Hash] the result of the request to create a user
+    #
+    # @example create a user
+    #   pamfaxr.create_user('tanakaty@unifa-e.com', '00000000', 'ja-JP')
+    #   
+    #   returns:
+    #
+    #   {
+    #            "result" => {
+    #              "code" => "success",
+    #              "type" => "",
+    #             "count" => 5,
+    #           "message" => ""
+    #       },
+    #       "UserProfile" => {
+    #                                "name" => "",
+    #                       "covertemplate" => nil,
+    #                          "cover_uuid" => nil,
+    #                           "senderfax" => nil,
+    #                       "sendercompany" => nil,
+    #                              "mobile" => nil,
+    #                         "chat_notify" => false,
+    #                        "email_notify" => false,
+    #                          "sms_notify" => false,
+    #                   "chat_notify_inbox" => false,
+    #                  "email_notify_inbox" => false,
+    #                    "sms_notify_inbox" => false,
+    #                  "group_notification" => false,
+    #                  "error_notification" => false,
+    #                      "chosen_culture" => "ja-JP",
+    #                     "chosen_currency" => "JPY",
+    #               "chosen_currencyformat" => "ja-JP",
+    #                     "chosen_timezone" => nil,
+    #                   "chosen_dateformat" => nil,
+    #                     "chat_reminder_1" => nil,
+    #                     "append_timezone" => nil,
+    #                 "max_attachment_size" => nil,
+    #           "single_notification_limit" => nil,
+    #                           "attach_tr" => nil
+    #       },
+    #              "User" => {
+    #                         "uuid" => "KsZtxzsjEqWKh9",
+    #                     "username" => "tanakaty@unifa-e.com",
+    #                      "created" => "2017-02-27 05:48:38",
+    #                       "credit" => 0,
+    #                  "free_credit" => 0,
+    #              "inactive_credit" => 0,
+    #           "reactivated_credit" => nil,
+    #                        "email" => "tanakaty@unifa-e.com",
+    #                    "confirmed" => 1,
+    #                    "is_member" => false,
+    #                 "cm_availible" => nil
+    #       },
+    #         "UserToken" => {
+    #           "token" => "gc7bb3e3an124cphk54p9jk6slq4611j"
+    #       },
+    #          "Currency" => {
+    #                 "code" => "JPY",
+    #           "raw_symbol" => "¥"
+    #       },
+    #        "UserRights" => {
+    #              "type" => "list",
+    #           "content" => [
+    #               [0] {
+    #                      "name" => "see_credit",
+    #                   "allowed" => 1
+    #               },
+    #               [1] {
+    #                      "name" => "buy_credit",
+    #                   "allowed" => 1
+    #               },
+    #               [2] {
+    #                      "name" => "buy_number",
+    #                   "allowed" => 1
+    #               },
+    #               [3] {
+    #                      "name" => "transfer_credit",
+    #                   "allowed" => 1
+    #               },
+    #               [4] {
+    #                      "name" => "receive_messages",
+    #                   "allowed" => 1
+    #               }
+    #           ]
+    #       }
+    #   }
+    def create_user(email, password, culture)
+      resource = '/UserInfo' + "/CreateUser" + @api_credentials + "&email=#{email}&password=#{password}&culture=#{culture}"
+      get(resource)
+    end
+
+    ##
+    # Delete a new PamFax user
+    # 
+    # @return [Hash] the result of the request to delete the currently logged in users account
+    #
+    # @example delete a user
+    #   pamfaxr.delete_user
+    #   
+    #   returns:
+    #
+    #   {
+    #          "result" => {
+    #              "code" => "success",
+    #              "type" => "",
+    #             "count" => 1,
+    #           "message" => ""
+    #       },
+    #       "UserToken" => {
+    #           "token" => nil
+    #       }
+    #   }
+    def delete_user
+      resource = '/UserInfo' + "/DeleteUser" + @api_credentials
+      get(resource)
+    end
+
+    ##
     # Captures any unknown methods gracefully by throwing a Runtime Error
     def method_missing(method, *args)
       raise RuntimeError, "Unknown method #{method}"
